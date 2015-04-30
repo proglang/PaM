@@ -1,0 +1,1099 @@
+<!-- Main-Layout of the MonitorMainScreen. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="monitor.pack.MonitorMainScreen"
+    android:id="@+id/mainLayout"
+    android:baselineAligned="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="horizontal">
+    
+    <!-- Layout for the settings. Width controlled with weight-factor. -->
+    <LinearLayout
+        android:id="@+id/settingsLayout"
+        android:layout_width="0dp"
+	    android:layout_height="match_parent"
+	   	android:layout_weight="0.0001"
+	   	android:background="@color/gray"
+	   	android:orientation="vertical" >
+	   	
+        <!-- Layout for the settings-title. -->
+        <RelativeLayout
+        android:layout_width="match_parent"
+	    android:layout_height="45dp"
+	   	android:background="@color/gray" >
+	   	
+            <TextView
+            android:id="@+id/settingsTitletextView"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:text="@string/settingsTitle" />
+	   	
+        </RelativeLayout>
+        
+        <!-- Layout for the backgroud-color-settings. -->
+        <RelativeLayout
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	   	android:background="@drawable/border_white" >
+	   	
+            <TextView
+	            android:id="@+id/backColorSettingsTitletextView"
+	            android:textAppearance="?android:attr/textAppearanceLarge"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_centerVertical="true"
+	            android:layout_marginLeft="7dp"
+	            android:textSize="20sp"
+	            android:text="@string/backColorSettingsTitle" />
+            
+            <Button
+                android:id="@+id/backColorSelectionWhiteButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@+id/backColorSelectionBlackButton"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/white"
+                android:onClick="changeBackColor" />
+
+            <Button
+                android:id="@+id/backColorSelectionBlackButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/backColorSelectionWhiteButton"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="7dp"
+                android:background="@color/black"
+                android:onClick="changeBackColor" />
+	   	
+        </RelativeLayout>
+        
+        <!-- Layout for the setting-selection. -->
+        <RelativeLayout
+        android:layout_width="match_parent"
+	    android:layout_height="65dp" >
+
+            <Button
+                android:id="@+id/ekgSettingsButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="@string/ekgSettigsButtonTitle"
+                android:onClick="showEKGSettings" />
+
+            <Button
+                android:id="@+id/ibpSettingsButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@+id/ekgSettingsButton"
+                android:layout_toRightOf="@+id/ekgSettingsButton"
+                android:textSize="16sp"
+                android:text="@string/ibpSettigsButtonTitle"
+                android:onClick="showIBPSettings" />
+
+            <Button
+                android:id="@+id/o2SettingsButton"
+                style="?android:attr/buttonStyleSmall"
+               	android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@+id/ibpSettingsButton"
+                android:layout_toRightOf="@+id/ibpSettingsButton"
+                android:textSize="16sp"
+                android:text="@string/o2SettigsButtonTitle"
+                android:onClick="showO2Settings" />
+
+            <Button
+                android:id="@+id/co2SettingsButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@+id/o2SettingsButton"
+                android:layout_toRightOf="@+id/o2SettingsButton"
+                android:textSize="16sp"
+                android:text="@string/co2SettigsButtonTitle"
+                android:onClick="showCO2Settings" />
+
+            <ImageView
+                android:id="@+id/settingsPointingArrowImageView"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="17dp"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/triangle"
+                android:contentDescription="@string/settingsPointingArrowDesc" />
+	   	
+        </RelativeLayout>
+        
+        <!-- Layout for the color selection. -->
+        <RelativeLayout
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	   	android:background="@drawable/border_white" >
+            
+           	<Button
+                android:id="@+id/colorSelectionRedButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/colorSelectionTitleTextView"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:background="@color/red"
+                android:onClick="changeColor" />
+
+            <Button
+                android:id="@+id/colorSelectionBlueButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/colorSelectionRedButton"
+                android:layout_toRightOf="@+id/colorSelectionRedButton"
+                android:layout_marginLeft="3dp"
+                android:background="@color/blue"
+                android:onClick="changeColor" />
+
+            <Button
+                android:id="@+id/colorSelectionGreenButton"
+                style="?android:attr/buttonStyleSmall"
+               	android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/colorSelectionBlueButton"
+                android:layout_toRightOf="@+id/colorSelectionBlueButton"
+                android:layout_marginLeft="3dp"
+                android:background="@color/green"
+                android:onClick="changeColor" />
+
+            <Button
+                android:id="@+id/colorSelectionYellowButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/colorSelectionGreenButton"
+                android:layout_toRightOf="@+id/colorSelectionGreenButton"
+                android:layout_marginLeft="3dp"
+                android:background="@color/yellow"
+                android:onClick="changeColor" />
+            
+            <Button
+                android:id="@+id/colorSelectionGrayButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignTop="@+id/colorSelectionYellowButton"
+                android:layout_toRightOf="@+id/colorSelectionYellowButton"
+                android:layout_marginLeft="3dp"
+                android:background="@color/bgray"
+                android:onClick="changeColor" />
+
+            <TextView
+                android:id="@+id/colorSelectionTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="-5dp"
+                android:layout_marginLeft="7dp"
+                android:textSize="20sp"
+                android:text="@string/colorSelectionTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+	   	
+        </RelativeLayout>
+        
+        <!-- Layout for the alarm settings. -->
+        <RelativeLayout
+        android:id="@+id/alarmSettingsLayout"
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	   	android:background="@drawable/border_white" >
+
+            <TextView
+                android:id="@+id/alarmSettingsTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="-5dp"
+                android:layout_marginLeft="7dp"
+                android:textSize="20sp"
+                android:text="@string/alarmSettingsTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/alarmOnOffButton"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/alarmSettingsTitleTextView"
+                android:layout_marginRight="7dp"
+                android:text="@string/OnOffButtonTitle"
+                android:textSize="16sp"
+                android:onClick="triggerAlarm" />
+
+            <TextView
+                android:id="@+id/firstAlarmTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/alarmSettingsTitleTextView"
+                android:layout_below="@+id/alarmOnOffButton"
+                android:text="@string/firstAlarmTitle"
+                android:textSize="17sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/firstAlarmUpperTHTextView"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/firstAlarmTitleTextView"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:text="@string/alarmUpperTH"
+                android:textSize="17sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/firstAlarmUpperTHValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/firstAlarmUpperTHTextView"
+                android:layout_toLeftOf="@+id/firstAlarmUpperTHUpButton"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="17sp"
+                android:text="@string/firstAlarmUpperTHValueDefault"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/firstAlarmUpperTHUpButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignRight="@+id/alarmOnOffButton"
+                android:layout_alignTop="@+id/firstAlarmUpperTHDownButton"
+                android:textSize="16sp"
+                android:text="@string/upButtonTitle"
+                android:onClick="startIncFirstAlarmUpTH" />
+
+            <Button
+                android:id="@+id/firstAlarmUpperTHDownButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/firstAlarmUpperTHTextView"
+                android:layout_toRightOf="@+id/firstAlarmUpperTHTextView"
+                android:layout_marginLeft="-13dp"
+                android:textSize="16sp"
+                android:text="@string/downButtonTitle"
+                android:onClick="startDecFirstAlarmUpTH" />
+            
+            <TextView
+                android:id="@+id/firstAlarmLowerTHTextView"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/firstAlarmUpperTHTextView"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:text="@string/alarmLowerTH"
+                android:textSize="17sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/firstAlarmLowerTHValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/firstAlarmLowerTHTextView"
+                android:layout_toLeftOf="@+id/firstAlarmLowerTHUpButton"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="17sp"
+                android:text="@string/firstAlarmLowerTHValueDefault"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/firstAlarmLowerTHUpButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignRight="@+id/alarmOnOffButton"
+                android:layout_alignTop="@+id/firstAlarmLowerTHDownButton"
+                android:textSize="16sp"
+                android:text="@string/upButtonTitle"
+                android:onClick="startIncFirstAlarmLowTH" />
+
+            <Button
+                android:id="@+id/firstAlarmLowerTHDownButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/firstAlarmLowerTHTextView"
+                android:layout_toRightOf="@+id/firstAlarmLowerTHTextView"
+                android:layout_marginLeft="-13dp"
+                android:textSize="16sp"
+                android:text="@string/downButtonTitle"
+                android:onClick="startDecFirstAlarmLowTH" />
+            
+            <TextView
+                android:id="@+id/secondAlarmTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/alarmSettingsTitleTextView"
+                android:layout_below="@+id/firstAlarmLowerTHTextView"
+                android:layout_marginTop="15dp"
+                android:text="@string/secondAlarmTitle"
+                android:textSize="17sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/secondAlarmUpperTHTextView"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/secondAlarmTitleTextView"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:text="@string/alarmUpperTH"
+                android:textSize="17sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/secondAlarmUpperTHValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/secondAlarmUpperTHTextView"
+                android:layout_toLeftOf="@+id/secondAlarmUpperTHUpButton"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="17sp"
+                android:text="@string/secondAlarmUpperTHValueDefault"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/secondAlarmUpperTHUpButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignRight="@+id/alarmOnOffButton"
+                android:layout_alignTop="@+id/secondAlarmUpperTHDownButton"
+                android:textSize="16sp"
+                android:text="@string/upButtonTitle"
+                android:onClick="startIncSecondAlarmUpTH" />
+
+            <Button
+                android:id="@+id/secondAlarmUpperTHDownButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/secondAlarmUpperTHTextView"
+                android:layout_toRightOf="@+id/secondAlarmUpperTHTextView"
+                android:layout_marginLeft="-13dp"
+                android:textSize="16sp"
+                android:text="@string/downButtonTitle"
+                android:onClick="startDecSecondAlarmUpTH" />
+            
+            <TextView
+                android:id="@+id/secondAlarmLowerTHTextView"
+                android:layout_width="106dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/secondAlarmUpperTHTextView"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="7dp"
+                android:text="@string/alarmLowerTH"
+                android:textSize="17sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/secondAlarmLowerTHValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/secondAlarmLowerTHTextView"
+                android:layout_toLeftOf="@+id/secondAlarmLowerTHUpButton"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="17sp"
+                android:text="@string/secondAlarmLowerTHValueDefault"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/secondAlarmLowerTHUpButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignRight="@+id/alarmOnOffButton"
+                android:layout_alignTop="@+id/secondAlarmLowerTHDownButton"
+                android:textSize="16sp"
+                android:text="@string/upButtonTitle"
+                android:onClick="startIncSecondAlarmLowTH" />
+
+            <Button
+                android:id="@+id/secondAlarmLowerTHDownButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/secondAlarmLowerTHTextView"
+                android:layout_toRightOf="@+id/secondAlarmLowerTHTextView"
+                android:layout_marginLeft="-13dp"
+                android:textSize="16sp"
+                android:text="@string/downButtonTitle"
+                android:onClick="startDecSecondAlarmLowTH" />
+	   	
+        </RelativeLayout>
+        
+        <!-- Layout for the sound settings. -->
+        <RelativeLayout
+       	android:id="@+id/soundSettingsLayout"
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	   	android:background="@drawable/border_white" >
+            
+            <TextView
+                android:id="@+id/soundSettingsTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="7dp"
+                android:textSize="20sp"
+                android:text="@string/soundSettingsTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/soundOnOffButton"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/soundSettingsTitleTextView"
+                android:layout_marginRight="7dp"
+                android:textSize="16sp"
+                android:text="@string/OnOffButtonTitle"
+                android:onClick="triggerSound" />
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+ 
+    <!-- Sub-main-layout for the vital-parameters of the patient. Width controlled with weight-factor. -->
+    <LinearLayout
+        android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:layout_weight="2">
+       
+        <!-- Layout for the Status-Bar. Height controlled with weight-factor. -->
+        <RelativeLayout 
+	        android:layout_width="match_parent"
+		    android:layout_height="0dp"
+		    android:background="@color/gray"
+		   	android:layout_weight="0.7">
+         
+            <TextView
+                android:id="@+id/statusBarTitle"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:text="@string/statusBarTitle" />
+            
+            <Button
+  				android:id="@+id/mainSoundOnOffButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/statusBarTitle"
+                android:layout_marginRight="10dp"
+  				android:drawableRight="@drawable/nspeaker2icon"
+  				android:drawablePadding="10dp"
+  				android:gravity="left|center_vertical"
+  				android:onClick="triggerSound"
+  				android:textSize="17sp"
+  				android:text="@string/mainSoundOnOffButtonTitle" />
+            
+            <Button
+  				android:id="@+id/alarmPauseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/mainAlarmOnOffButton"
+                android:onClick="pauseAlarm"
+                android:textSize="17sp"
+  				android:text="@string/alarmPauseButtonTitle" />
+            
+            <Button
+  				android:id="@+id/mainAlarmOnOffButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/statusBarTitle"
+                android:layout_marginLeft="10dp"
+  				android:drawableRight="@drawable/nbell2icon"
+  				android:drawablePadding="10dp"
+  				android:gravity="left|center_vertical"
+  				android:onClick="alarmOnOff"
+  				android:textSize="17sp"
+  				android:text="@string/mainAlarmOnOffButtonTitle" />
+
+            <Button
+                android:id="@+id/openCloseSettingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:onClick="openCloseSettings"
+                android:text="@string/openCloseSettingsButtonTitle" />
+
+            <Button
+                android:id="@+id/openCloseDefiButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:onClick="openCloseDefi"
+                android:text="@string/openCloseDefiButtonTitle" />
+	        
+	    </RelativeLayout>
+	    
+        <!-- Layout for vital curves and parameters. Height controlled with weight-factor. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:orientation="horizontal"
+			android:layout_weight="7" >
+            
+            <!-- Layout for the vital curves. Width controlled with weight-factor. -->
+	        <RelativeLayout 
+	            android:id="@+id/curveViewLayout"
+		        android:layout_width="0dp"
+			    android:layout_height="match_parent"
+			   	android:layout_weight="2.5">
+			   	
+	            <!-- Layout for curve-view -->
+	            
+	         </RelativeLayout>   
+        
+	        <!-- Layout for the paramter-layouts. Width controlled with weight-factor. -->
+	        <LinearLayout
+	            android:layout_width="280dp"
+				android:layout_height="match_parent"
+				android:orientation="vertical" >
+	    
+		        <!-- Layout for the EKG parameters. Height controlled with weight-factor. -->
+			  	<RelativeLayout 
+			  	    android:id="@+id/ekgParamLayout"
+			        android:layout_width="match_parent"
+				    android:layout_height="0dp"
+				   	android:layout_weight="2.5"
+				   	android:background="@drawable/border" >
+		
+		
+			            <TextView
+			                android:id="@+id/ekgValueTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentBottom="true"
+			                android:layout_alignParentRight="true"
+			                android:layout_marginBottom="18dp"
+			                android:layout_marginRight="20dp"
+			                android:textColor="@color/green"
+			                android:textSize="50sp"
+			                android:text="@string/ekgValueDefault" />
+		
+			            <TextView
+			                android:id="@+id/ekgTitleTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentLeft="true"
+			                android:layout_alignParentTop="true"
+			                android:layout_marginLeft="7dp"
+			                android:textSize="22sp"
+			                android:text="@string/ekgTitle" />
+		
+			            <ImageView
+			                android:id="@+id/ekgHeartImageView"
+			                android:layout_width="70dp"
+			                android:layout_height="70dp"
+			                android:layout_alignParentBottom="true"
+			                android:layout_marginBottom="17dp"
+			                android:layout_marginLeft="55dp"
+			                android:src="@drawable/heart"
+			                android:contentDescription="@string/ekgHeartDesc" />
+			            
+			            <ImageView
+			                android:id="@+id/ekgAlarmImageView"
+			                android:layout_width="20dp"
+			                android:layout_height="20dp"
+			                android:layout_alignLeft="@+id/ekgTitleTextView"
+			                android:layout_below="@+id/ekgTitleTextView"
+			                android:src="@drawable/bell2"
+			                android:contentDescription="@string/alarmDesc" />
+			            
+			            <ImageView
+			                android:id="@+id/ekgSoundImageView"
+			                android:layout_width="20dp"
+			                android:layout_height="20dp"
+			                android:layout_alignLeft="@+id/ekgTitleTextView"
+			                android:layout_below="@+id/ekgAlarmImageView"
+			                android:layout_marginTop="8dp"
+			                android:src="@drawable/speaker2"
+			                android:contentDescription="@string/ekgSoundDesc" />
+			    
+			    </RelativeLayout>
+			    
+			    <!-- Layout for the invasible blood pressure parameters. Height controlled with weight-factor. -->
+			    <RelativeLayout 
+			        android:id="@+id/ibpParamLayout"
+			        android:layout_width="match_parent"
+				    android:layout_height="0dp"
+				   	android:layout_weight="2"
+				   	android:background="@drawable/border">
+		
+			            <TextView
+			                android:id="@+id/ibpTitleTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentLeft="true"
+			                android:layout_alignParentTop="true"
+			                android:layout_marginLeft="7dp"
+			                android:textSize="22sp"
+			                android:text="@string/ibpTitle" />
+		
+			            <TextView
+			                android:id="@+id/ibpValueTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentBottom="true"
+			                android:layout_alignParentRight="true"
+			                android:layout_marginBottom="10dp"
+			                android:layout_marginRight="20dp"
+			                android:textColor="@color/red"
+			                android:textSize="50sp"
+			                android:text="@string/ibpValueDefault" />
+		
+			            <TextView
+			                android:id="@+id/ibpUnitTextView"
+			                android:textAppearance="?android:attr/textAppearanceMedium"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignBaseline="@+id/ibpTitleTextView"
+			                android:layout_alignBottom="@+id/ibpTitleTextView"
+			                android:layout_alignRight="@+id/ibpValueTextView"
+			                android:textSize="15sp"
+			                android:text="@string/unitMMHG" />
+		
+			            <ImageView
+			                android:id="@+id/ibpAlarmImageView"
+			                android:layout_width="20dp"
+			                android:layout_height="20dp"
+			                android:layout_alignLeft="@+id/ibpTitleTextView"
+			                android:layout_below="@+id/ibpTitleTextView"
+			                android:src="@drawable/bell2"
+			                android:contentDescription="@string/alarmDesc" />
+			        
+			    </RelativeLayout>
+			    
+			    <!-- Layout for the oxygen saturation paramters. Height controlled with weight-factor. -->
+			    <RelativeLayout 
+			        android:id="@+id/o2ParamLayout"
+			        android:layout_width="match_parent"
+				    android:layout_height="0dp"
+				   	android:layout_weight="2"
+				   	android:background="@drawable/border">
+		
+			            <TextView
+			                android:id="@+id/o2TitleTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentLeft="true"
+			                android:layout_alignParentTop="true"
+			                android:layout_marginLeft="7dp"
+			                android:textSize="22sp"
+			                android:text="@string/o2Title" />
+		
+			            <TextView
+			                android:id="@+id/o2ValueTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentBottom="true"
+			                android:layout_alignParentRight="true"
+			                android:layout_marginBottom="10dp"
+			                android:layout_marginRight="20dp"
+			                android:textColor="@color/yellow"
+			                android:textSize="50sp"
+			                android:text="@string/o2ValueDefault" />
+			            
+			            <TextView
+			                android:id="@+id/o2UnitTextView"
+			                android:textAppearance="?android:attr/textAppearanceMedium"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignBaseline="@+id/o2TitleTextView"
+			                android:layout_alignBottom="@+id/o2TitleTextView"
+			                android:layout_alignRight="@+id/o2ValueTextView"
+			                android:textSize="15sp"
+			                android:text="@string/unitPercent" />
+			            
+			            <ImageView
+			                android:id="@+id/o2AlarmImageView"
+			                android:layout_width="20dp"
+			                android:layout_height="20dp"
+			                android:layout_alignLeft="@+id/o2TitleTextView"
+			                android:layout_below="@+id/o2TitleTextView"
+			                android:src="@drawable/bell2"
+			                android:contentDescription="@string/alarmDesc" />
+			        
+			    </RelativeLayout>
+		    
+			    <!-- Layout for the CO2 level paramters. Height controlled with weight-factor. -->
+			    <RelativeLayout 
+			        android:id="@+id/co2ParamLayout"
+			        android:layout_width="match_parent"
+				    android:layout_height="0dp"
+				   	android:layout_weight="2"
+				   	android:background="@drawable/border">
+		
+			            <TextView
+			                android:id="@+id/co2TitleTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentLeft="true"
+			                android:layout_alignParentTop="true"
+			                android:layout_marginLeft="7dp"
+			                android:textSize="22sp"
+			                android:text="@string/co2Title" />
+		
+			            <TextView
+			                android:id="@+id/co2ValueTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentBottom="true"
+			                android:layout_alignParentRight="true"
+			                android:layout_marginBottom="10dp"
+			                android:layout_marginRight="20dp"
+			                android:textColor="@color/gray"
+			                android:textSize="50sp"
+			                android:text="@string/co2ValueDefault" />
+			            
+			            <TextView
+			                android:id="@+id/co2UnitTextView"
+			                android:textAppearance="?android:attr/textAppearanceMedium"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignBaseline="@+id/co2TitleTextView"
+			                android:layout_alignBottom="@+id/co2TitleTextView"
+			                android:layout_alignRight="@+id/co2ValueTextView"
+			                android:textSize="15sp"
+			                android:text="@string/unitMMHG" />
+			            
+			            <TextView
+			                android:id="@+id/afValueTextView"
+			                android:textAppearance="?android:attr/textAppearanceLarge"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentBottom="true"
+			                android:layout_alignParentLeft="true"
+			                android:layout_marginBottom="5dp"
+			                android:layout_marginLeft="80dp"
+			                android:textColor="@color/gray"
+			                android:textSize="40sp"
+			                android:text="@string/afValueDefault" />
+			            
+			            <TextView
+			                android:id="@+id/afTitleTextView"
+			                android:textAppearance="?android:attr/textAppearanceMedium"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_alignParentLeft="true"
+			                android:layout_alignTop="@+id/afValueTextView"
+			                android:layout_marginTop="10dp"
+			                android:layout_marginLeft="38dp"
+			                android:textSize="18sp"
+			                android:text="@string/afTitle" />
+			            
+			            <ImageView
+			                android:id="@+id/co2AlarmImageView"
+			                android:layout_width="20dp"
+			                android:layout_height="20dp"
+			                android:layout_alignLeft="@+id/co2TitleTextView"
+			                android:layout_below="@+id/co2TitleTextView"
+			                android:src="@drawable/bell2"
+			                android:contentDescription="@string/alarmDesc" />
+			       
+			    </RelativeLayout>
+		    
+		   	</LinearLayout>
+	    
+	    </LinearLayout>
+	    
+        <!-- Layout for the not invasible blood pressure. Height controlled with weight-factor. -->
+	    
+	    <!-- Layout for the not invasible blood pressure settings. -->
+	    <RelativeLayout 
+	        android:layout_width="match_parent"
+		    android:layout_height="0dp"
+		   	android:layout_weight="1.4">
+	
+	        <RelativeLayout 
+	        android:id="@+id/nibpSettingsLayout"
+	        android:layout_width="wrap_content"
+		    android:layout_height="match_parent"
+		    android:layout_alignParentLeft="true"
+		    android:background="@drawable/border"
+		    android:layout_toLeftOf="@+id/nibpParamLayout">
+
+	            <TextView
+	                android:id="@+id/nibpSettingsTitleTextView"
+	                android:textAppearance="?android:attr/textAppearanceLarge"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentLeft="true"
+	                android:layout_alignParentTop="true"
+	                android:layout_marginLeft="7dp"
+	                android:textSize="20sp"
+	                android:text="@string/nibpSettingsTitle" />
+
+	            <Button
+	                android:id="@+id/nibpStartButton"
+	                style="@style/Button_green_small"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentRight="true"
+	                android:layout_centerVertical="true"
+	                android:layout_marginRight="18dp"
+	                android:onClick="startNIBP"
+	                android:text="@string/nibpStartButtonText" />
+
+	            <Button
+	                android:id="@+id/nibpAutoButton"
+	                style="@style/Button_green_small"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignBaseline="@+id/nibpStartButton"
+	                android:layout_alignBottom="@+id/nibpStartButton"
+	                android:layout_marginRight="18dp"
+	                android:layout_toLeftOf="@+id/nibpStartButton"
+	                android:onClick="autoNIBP"
+	                android:text="@string/nibpAutoButtonText" />
+
+	            <SeekBar
+	                android:id="@+id/nibpAutoTimeSeekBar"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentLeft="true"
+	                android:layout_marginLeft="25dp"
+	                android:layout_alignParentBottom="true"
+	                android:layout_marginBottom="8dp"
+	                android:layout_toLeftOf="@+id/nibpAutoButton"
+	                android:layout_marginRight="18dp" />
+
+	            <TextView
+	                android:id="@+id/nibpAutoTimeTextView"
+	                android:textAppearance="?android:attr/textAppearanceMedium"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignRight="@+id/nibpAutoTimeSeekBar"
+	                android:layout_alignTop="@+id/nibpAutoButton"
+	                android:textSize="20sp"
+	                android:text="@string/nibpAutoTimeDefault" />
+
+	        </RelativeLayout>
+	        
+	        <!-- Layout for the not invasible blood pressure parameters. -->
+	        <RelativeLayout 
+	        android:id="@+id/nibpParamLayout"
+	        android:layout_width="280dp"
+		    android:layout_height="match_parent"
+		    android:layout_alignParentRight="true"
+		    android:background="@drawable/border">
+
+	            <TextView
+	                android:id="@+id/nibpParamTitleTextView"
+	                android:textAppearance="?android:attr/textAppearanceLarge"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentLeft="true"
+	                android:layout_alignParentTop="true"
+	                android:layout_marginLeft="7dp"
+	                android:textSize="22sp"
+	                android:text="@string/nibpParamTitle" />
+
+	            <TextView
+	                android:id="@+id/nibpValueTextView"
+	                android:textAppearance="?android:attr/textAppearanceLarge"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentBottom="true"
+	                android:layout_alignParentRight="true"
+	                android:layout_marginBottom="0dp"
+	                android:layout_marginRight="20dp"
+	                android:textColor="@color/red"
+	                android:textSize="42sp"
+	                android:text="@string/nibpValueDefault" />
+	            
+	            <TextView
+	                android:id="@+id/nibpUnitTextView"
+	                android:textAppearance="?android:attr/textAppearanceMedium"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignBaseline="@+id/nibpParamTitleTextView"
+	                android:layout_alignBottom="@+id/nibpParamTitleTextView"
+	                android:layout_alignRight="@+id/nibpValueTextView"
+	                android:textSize="15sp"
+	                android:text="@string/unitMMHG" />
+	            
+	            <ImageView
+	                android:id="@+id/nibpAlarmImageView"
+	                android:layout_width="20dp"
+	                android:layout_height="20dp"
+	                android:layout_alignLeft="@+id/nibpParamTitleTextView"
+	                android:layout_below="@+id/nibpParamTitleTextView"
+	                android:src="@drawable/bell2"
+	                android:contentDescription="@string/alarmDesc" />
+
+	        </RelativeLayout>
+	        
+	    </RelativeLayout>
+    
+    </LinearLayout>
+
+    <!-- Layout for the Defi-Mode. Width controlled with weight-factor. -->
+
+    <RelativeLayout
+        android:id="@+id/defiLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.00001"
+        android:background="@drawable/border_black_back">
+
+        <TextView
+            android:id="@+id/defiEnergy"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/defiTitletextView"
+            android:layout_below="@+id/defiTitletextView"
+            android:layout_marginTop="22dp"
+            android:background="@color/white"
+            android:text="@string/startEnergy"
+            android:gravity="center_horizontal|center_vertical"            
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"            
+            android:layout_below="@+id/defiEnergy"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/border_black_back" >
+
+            <ImageButton
+                android:id="@+id/defiButtonUp"
+                android:layout_width="@dimen/arrowSizeSmall"
+                android:layout_height="@dimen/arrowSizeSmall"
+                android:onClick="defiEnergyUp"
+                android:background="@color/green"
+                android:contentDescription="@string/defiButtonUp"
+                android:src="@android:drawable/arrow_up_float" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/defiEnergySet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/energy"
+                android:gravity="center_horizontal|center_vertical"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/defiButtonDown"
+                android:layout_width="@dimen/arrowSizeSmall"
+                android:layout_height="@dimen/arrowSizeSmall"
+                android:contentDescription="@string/defiButtonDown"
+                android:onClick="defiEnergyDown"
+                android:background="@color/green"                
+                android:src="@android:drawable/arrow_down_float" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/defiChargeButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/yellow_button"
+            android:contentDescription="@string/defiChargeButton"
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="defiCharge"
+            android:text="@string/defiChargeText" />
+
+        <ImageButton
+            android:id="@+id/defiShockButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/defiChargeButton"
+            android:layout_marginTop="40dp"
+            android:padding="20dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/defiShockButton"
+            android:background="@drawable/roundedbutton"
+            android:onClick="shock"
+            android:src="@android:drawable/ic_lock_idle_low_battery" />
+
+        <Button
+            android:id="@+id/defiDischargeButton"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/defiShockButton"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/blue_button"
+            android:contentDescription="@string/defiDischargeButton"
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="defiDischarge"
+            android:text="@string/defiDischargeText" />
+
+        <TextView
+            android:id="@+id/defiTitletextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/defiTitle"
+            android:textSize="20sp"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </RelativeLayout>
+
+</LinearLayout>
